@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>DietApp.Infrastructure</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\DietApp.Application\DietApp.Application.csproj" />
+    </ItemGroup>
+
+</Project>
