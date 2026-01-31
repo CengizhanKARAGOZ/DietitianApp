@@ -17,7 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Auth\" />
       <Folder Include="Features\Clients\" />
       <Folder Include="Features\Import\" />
       <Folder Include="Features\MealPlans\" />
