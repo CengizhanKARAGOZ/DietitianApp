@@ -8,6 +8,7 @@ using DietApp.Application.Features.Auth.DTOs;
 using DietApp.Application.Features.Auth.Queries.GetCurrentUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 namespace DietApp.API.Controllers;
 
@@ -97,9 +98,9 @@ public class AuthController : BaseController
 
     private string? GetIpAddress()
     {
-        if (Request.Headers.ContainsKey("X-Forwarded-For"))
+        if (Request.Headers.TryGetValue("X-Forwarded-For", out StringValues value))
         {
-            return Request.Headers["X-Forwarded-For"].FirstOrDefault();
+            return value.FirstOrDefault();
         }
 
         return HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
