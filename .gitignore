@@ -72,3 +72,9 @@ temp/
 *.bak
 *.tmp
 *.temp
+
+# Sensitive configs
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+!appsettings.Example.json

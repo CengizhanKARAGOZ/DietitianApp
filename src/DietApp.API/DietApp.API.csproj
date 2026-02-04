@@ -6,10 +6,16 @@
 
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+        <PackageReference Include="Serilog.AspNetCore" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\DietApp.Infrastructure\DietApp.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Filters\" />
     </ItemGroup>
 
 </Project>
