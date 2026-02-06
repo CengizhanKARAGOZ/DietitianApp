@@ -1,0 +1,15 @@
+**/.git
+**/.gitignore
+**/.vs
+**/.vscode
+**/.idea
+**/bin
+**/obj
+**/node_modules
+**/.env
+**/docker-compose.override.yml
+**/appsettings.Development.json
+**/appsettings.Local.json
+**/*.md
+**/Thumbs.db
+**/.DS_Store
