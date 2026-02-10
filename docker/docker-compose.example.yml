@@ -1,0 +1,48 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: dietapp-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: YOUR_ROOT_PASSWORD
+      MYSQL_DATABASE: dietapp
+      MYSQL_USER: YOUR_USERNAME
+      MYSQL_PASSWORD: YOUR_PASSWORD
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dietapp-network
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/api/Dockerfile
+    container_name: dietapp-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mysql;Port=3306;Database=dietapp;User=YOUR_USERNAME;Password=YOUR_PASSWORD;
+      - Jwt__Secret=YOUR_JWT_SECRET_AT_LEAST_32_CHARACTERS
+      - Jwt__Issuer=DietApp
+      - Jwt__Audience=DietApp
+      - Jwt__AccessTokenExpiryMinutes=60
+      - Jwt__RefreshTokenExpiryDays=30
+    ports:
+      - "5000:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - dietapp-network
+
+volumes:
+  mysql_data:
+
+networks:
+  dietapp-network:
+    driver: bridge

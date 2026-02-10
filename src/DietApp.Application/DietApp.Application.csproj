@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Clients\" />
+      <Folder Include="Features\Auth\Queries\GetClientById\" />
       <Folder Include="Features\Import\" />
       <Folder Include="Features\MealPlans\" />
       <Folder Include="Features\Measurements\" />
